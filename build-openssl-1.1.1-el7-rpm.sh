@@ -56,13 +56,11 @@ sleep 1
 install -m 0755 -d ~/rpmbuild/SOURCES
 cp -pfr * ~/rpmbuild/SOURCES/
 sleep 1
-###############################################################################
+############################################################################
 
 cd /tmp
 rm -fr "${_tmp_dir}"
 rpmbuild -v -ba ~/rpmbuild/SOURCES/openssl-1.1.1.spec
-
-find ~/rpmbuild/RPMS/ -type f -iname '*.rpm'
 
 rm -fr /tmp/_output
 install -m 0755 -d /tmp/_output/openssl
