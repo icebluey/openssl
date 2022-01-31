@@ -15,7 +15,7 @@ fi
 
 cd openssl
 
-sha256sum --check sha256sums.txt 2>/dev/null; _rc_status="$?"
+ls -1 *.rpm | xargs --no-run-if-empty -I '{}' grep '{}' sha256sums.txt | sha256sum --check - 2>/dev/null; _rc_status="$?"
 if [[ ${_rc_status} != "0" ]]; then
     echo
     printf '\033[01;31m%s\033[m\n' 'Checksum failed' 'Aborted'
